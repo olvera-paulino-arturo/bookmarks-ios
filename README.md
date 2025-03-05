@@ -5,3 +5,5 @@
 - Las clases de BookmarksModel CoreData deben de ser generadas manualmente en caso de que den error.
 - El fichero GoogleService-Info.plist ya esta incluido dentro de:
   > SupportingFiles/GoogleService
+- El fichero xcworkspace **bookmarks.xcworkspace** se genera desde su local ejecutando:
+  >  pod install
