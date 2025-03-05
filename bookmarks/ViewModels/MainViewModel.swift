@@ -20,6 +20,7 @@ class MainViewModel: ObservableObject {
     func loggout() {
         if(authManager.loggout()) {
             inMemory.clean()
+            LanguageHelper.removeLanguage()
             dataManager.deleteAll()
         }
     }

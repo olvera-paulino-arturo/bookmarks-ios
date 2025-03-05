@@ -11,14 +11,26 @@ struct AuthView: View {
     @StateObject var viewModel = AuthViewModel()
     @EnvironmentObject var splashViewModel : SplashViewModel
     
+    
     var body: some View {
         ScrollView {
             VStack {
+                HStack {
+                    Spacer()
+                    ConditionalRender(condition: !viewModel.langages.isEmpty) {
+                        LanguageDropdown(options: viewModel.langages, selected: $viewModel.selected)
+                    } fallback: {
+                        EmptyView()
+                    }
+
+                }
                 Image(.icon)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 200)
                     .padding(.bottom, 24)
+                
+                
                 
                 Title(title: "authTitle")
                 
