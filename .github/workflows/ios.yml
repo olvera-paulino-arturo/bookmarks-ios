@@ -1,0 +1,39 @@
+name: Build iOS App
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest 
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install CocoaPods
+        run: |
+          sudo gem install cocoapods
+
+      - name: Install dependencies
+        run: |
+          pod install --repo-update
+
+      - name: Set up Xcode
+        uses: macos-setup-xcode@v2
+        with:
+          xcode-version: '16.2'
+
+      - name: Build the app
+        run: |
+          xcodebuild -workspace bookmarks.xcworkspace -scheme bookmarks -sdk iphoneos -configuration Release clean build | xcpretty
+
+      
+      - name: Run tests
+        run: |
+          xcodebuild test -workspace bookmarks.xcworkspace -scheme bookmarks -sdk iphonesimulator -configuration Debug | xcpretty
