@@ -11,6 +11,7 @@ import Combine
 class AuthViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let authManager: AuthManager = AuthManager()
+    private let countriesRepository = CountriesRepository()
     
     private let syncDataHelper = SyncDataHelper()
     
@@ -22,6 +23,9 @@ class AuthViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var hasMessage: Bool = false
     @Published var message: String = ""
+    @Published var langages: [Language] = []
+    
+    @Published var selected: Language = Language(code: "", name: "", native: "")
     
     private var isAuthValidPublisher: AnyPublisher<Bool,Never> {
         Publishers.CombineLatest(email.$isValid, password.$isValid).map{
@@ -33,6 +37,24 @@ class AuthViewModel: ObservableObject {
         self.isAuthValidPublisher
             .assign(to: \.isAuthFormValid, on: self)
             .store(in: &cancellables)
+        
+        self.$selected.sink {let _ = AppErrorHelper.containsError($0)}
+        receiveValue: { language in
+            LanguageHelper.setLanguage(language: language)
+        }.store(in: &cancellables)
+        
+        self.countriesRepository.getLanguages()
+            .subscribe(on: DispatchQueue.global())
+            .receive(on: DispatchQueue.main)
+            .sink {let _ = AppErrorHelper.containsError($0)} receiveValue: { languages in
+                self.langages = languages.languages
+                if(!languages.languages.isEmpty) {
+                    self.selected = languages.languages.first!
+                }
+                
+        }
+        .store(in: &cancellables)
+
     }
     
     

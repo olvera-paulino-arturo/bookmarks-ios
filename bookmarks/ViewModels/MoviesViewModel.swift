@@ -36,7 +36,7 @@ class MoviesViewModel: ObservableObject {
     
     
     private func loadMovies() {
-        movieRepository.getMovies(movieRequest: MoviesRequest(language: "es"))
+        movieRepository.getMovies(movieRequest: MoviesRequest(language: LanguageHelper.readLanguage()))
             .subscribe(on: DispatchQueue.global())
             .receive(on: DispatchQueue.main)
             .sink {
