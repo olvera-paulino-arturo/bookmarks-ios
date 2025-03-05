@@ -7,3 +7,4 @@
   > SupportingFiles/GoogleService
 - El fichero xcworkspace **bookmarks.xcworkspace** se genera desde su local ejecutando:
   >  pod install
+- Se eliminó Apollo para GraphQL debido a la complejidad de no poder automatizar la instalación CLI que requiere node y algunos extras con un script. Las consultas GraphQL ahora se realizan a través de **URLSession**.
