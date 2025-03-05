@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1007920490999-mm7kgapqj37l9gilcb7uq615fejncef6.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1007920490999-mm7kgapqj37l9gilcb7uq615fejncef6</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAgwSHnUBfSGlzmvfUJoRKj0tCjadErhO8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1007920490999</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>mx.com.arturo.bookmarks</string>
+	<key>PROJECT_ID</key>
+	<string>swiftui-bookmarks</string>
+	<key>STORAGE_BUCKET</key>
+	<string>swiftui-bookmarks.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1007920490999:ios:b077bb275e1fd7af55e6f2</string>
+</dict>
+</plist>
